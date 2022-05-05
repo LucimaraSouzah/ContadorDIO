@@ -1,14 +1,32 @@
 let currentNumberWrapper = document.getElementById('currentNumber')
 let currentNumber = 0
 
-function increment() {
-    currentNumber = currentNumber + 1
-    currentNumberWrapper.innerHTML = currentNumber
+
+function incrementFunction() {
+    if (currentNumberWrapper.innerHTML < 10) {
+        ++currentNumber
+        currentNumberWrapper.innerHTML = currentNumber    
+    }
+    if (currentNumberWrapper.innerHTML >= 0) {
+        currentNumberWrapper.style.color = "black"
+    }  
 }
 
-function decrement() {
-    if (currentNumberWrapper.innerHTML != 0) {
-        currentNumber = currentNumber - 1
-        currentNumberWrapper.innerHTML = currentNumber
+function decrementFunction() {
+    if (currentNumberWrapper.innerHTML > -10) {
+        --currentNumber
+        currentNumberWrapper.innerHTML = currentNumber 
     }
+    if (currentNumberWrapper.innerHTML < 0) {
+        currentNumberWrapper.style.color = "red"
+    }  
 }
+
+increment.addEventListener('click', (e=>{
+    incrementFunction()
+}))
+
+decrement.addEventListener('click', (e=>{
+    decrementFunction()
+}))
+
